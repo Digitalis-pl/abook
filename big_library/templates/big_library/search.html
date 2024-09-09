@@ -1,0 +1,22 @@
+{% extends 'newsletter_app/base/inside_base.html' %}
+{% block content %}
+<div class="row mt-5 mb-5 pb-5 text-center">
+    <div class="col-12">
+        <form method="get">
+            <input type="text" name="q" value="{{ query }}" placeholder="Введите строку для поиска">
+            <button type="submit">Поиск</button>
+        </form>
+
+        {% if documents %}
+        <h2>Результаты поиска</h2>
+        <ul>
+            {% for document in documents %}
+            <li>{{ document.title }} ({{ document.created_at }})</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Документы не найдены.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

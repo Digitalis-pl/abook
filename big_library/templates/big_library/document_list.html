@@ -1,0 +1,12 @@
+{% extends 'newsletter_app/base/inside_base.html' %}
+{% block content %}
+<div class="row mt-5 mb-5 pb-5 text-center">
+    <h2>Список документов</h2>
+    <ul>
+        {% for document in documents %}
+        <li>{{ document.title }} ({{ document.created_at }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'upload_document' %}">Загрузить новый документ</a>
+</div>
+{% endblock %}
