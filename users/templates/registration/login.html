@@ -1,0 +1,47 @@
+{% load static %}
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+  <head><script type="text/javascript" src="https://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=aoh58VZImFdvJyy2-boe_98uHsxsxjcLAn5unvzlmElLLfSTWesrFMduB_GmsXvF3zmPBSSZSf3cD1G3w5DTpyAnViIRuK2dRkevU15iaZ8" charset="UTF-8"></script><script src="{% static 'js/color-modes.js' %}"></script>
+
+    {%include 'newsletter_app/includes/some_meta.html' %}
+
+    <title>Signin Template · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/sign-in/">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Favicons -->
+
+{%include 'newsletter_app/includes/some_links.html' %}
+
+    {% include 'newsletter_app/includes/some_style.html' %}
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/sign-in.css' %}" rel="stylesheet">
+  </head>
+  <body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+    {% include 'newsletter_app/includes/style_for_page.html' %}
+
+    <div class="dropdown position-fixed bottom-0 end-0  mb-3 me-3 bd-mode-toggle">
+    {% include 'newsletter_app/includes/light_button.html' %}
+    </div>
+
+<main class="form-signin w-100 m-auto">
+  <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary mt-2 mb-2">
+          Войти
+      </button>
+      <p class="lead mb-0"><a href="{% url 'users:password_reset' %}" class="text-body-emphasis">Забыл пароль.</a></p>
+      <p class="lead mb-0"><a href="{% url 'users:registration' %}" class="text-body-emphasis">Зарегистрироваться.</a></p>
+  </form>
+</main>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+    </body>
+</html>

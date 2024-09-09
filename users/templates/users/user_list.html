@@ -1,0 +1,35 @@
+{% extends 'newsletter_app/base/inside_base.html' %}
+{% load text_tags %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col" style="overflow: auto; max-height: 90vh;">
+            <table class="table table-dark table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ФИО</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Статус</th>
+                </tr>
+                </thead>
+                {% for object in object_list %}
+                <tbody>
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td><a href="{% url 'newsletter_app:client_detail' object.pk %}">{{ object.email }}</a></td>
+                    <td><a href="{% url 'newsletter_app:client_detail' object.pk %}">{{ object.phone }}</a></td>
+                    {% if object.is_active %}
+                    <td><a class="btn btn-primary" href="{% url 'users:user_status_button' object.pk %}">Отключить</a></td>
+                    {% else %}
+                    <td><a class="btn btn-primary" href="{% url 'users:user_status_button' object.pk %}">Активировать</a></td>
+                    {% endif %}
+                </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

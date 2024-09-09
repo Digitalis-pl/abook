@@ -1,0 +1,24 @@
+{% extends 'newsletter_app/base/inside_base.html' %}
+{% block content %}
+      <div class="container py-3" style=" overflow: auto; max-height: 70vh;">
+        <div class="card mb-4 rounded-3 shadow-sm" style="max-width: 73%;">
+            <div class="container">
+              <div class="d-flex justify-content-between card-header py-3">
+                  <div class="d-inline">
+                    <h4 class="my-0 fw-normal d-inline">Удалить {{ object.first_name }} {{ object.last_name }}?</h4>
+                  </div>
+              </div>
+            </div>
+          <div class="card-body text-center">
+              {% csrf_token %}
+              <form class="row" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+              <button type="submit" class="btn w-100 btn btn-lg btn-outline-primary fw-bold border-danger mt-2 mb-2">
+                Подтвердить
+              </button>
+             <a class="btn w-100 btn btn-lg btn-outline-primary" href="{% url 'newsletter_app:message_detail' object.pk %}" role="button">Отмена</a>
+             </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}
